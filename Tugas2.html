@@ -60,9 +60,12 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas_2';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Identifikasi Outlier Menggunakan K-Nearest Neighbors (KNN) dalam Analisis Data" href="KNN.html" />
     <link rel="prev" title="TUGAS 1" href="tugas1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -169,9 +172,11 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tugas1.html">TUGAS 1</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Tugas 2</strong></a></li>
-
-
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><strong>Tugas 2</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="KNN.html"><strong>Identifikasi Outlier Menggunakan K-Nearest Neighbors (KNN) dalam Analisis Data</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="LOF.html"><strong>Deteksi Outlier Menggunakan Local Outlier Factor (LOF) dalam Pemahaman Data</strong></a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -248,7 +253,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas_2.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTugas2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +283,7 @@
       
       
       
-      <li><a href="_sources/Tugas_2.ipynb" target="_blank"
+      <li><a href="_sources/Tugas2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,9 +346,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -359,17 +362,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Tugas 2</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -387,117 +379,6 @@
 <li><p><strong>Apa itu outlier Deteksi?</strong></p></li>
 </ol>
 <p>Outlier detection adalah proses identifikasi data atau pengamatan yang memiliki nilai yang sangat berbeda (menyimpang) dari mayoritas data lainnya dalam sebuah dataset. Outlier ini bisa menunjukkan kesalahan pengukuran, variabilitas yang ekstrem, atau kejadian yang tidak biasa.</p>
-<ol class="arabic simple" start="2">
-<li><p><strong>Outlier Deteksi dengan Menggunakan k-Nearest Neighbors (k-NN) pada Data Understanding</strong></p></li>
-</ol>
-<p>k-Nearest Neighbors (k-NN) adalah salah satu metode yang dapat digunakan untuk mendeteksi outlier pada proses Data Understanding. Metode ini bekerja dengan cara menghitung jarak antara titik data dengan k tetangga terdekatnya. Jika sebuah data memiliki jarak yang jauh dari tetangga-tetangganya, maka data tersebut dianggap sebagai outlier.</p>
-<ol class="arabic simple" start="3">
-<li><p><strong>Penjelasan k-NN (k-Nearest Neighbors) pada Data Understanding</strong></p></li>
-</ol>
-<p>Dalam tahap Data Understanding pada proses analisis data, k-NN (k-Nearest Neighbors) digunakan sebagai salah satu metode untuk mendeteksi outlier atau anomali pada dataset.</p>
-<ol class="arabic simple" start="4">
-<li><p>Langkah-langkah Deteksi Outlier Dengan KNN (K-Nearest Neighbors)</p></li>
-</ol>
-<p>Deteksi outlier menggunakan metode k-NN (k-Nearest Neighbors) berbasis jarak dilkukan dengan beberapa tahapan sistematis dalam proses <strong>Data Understanding</strong>.</p>
-<p>Ada beberapa langkah deteksi outler dengan KNN :</p>
-<ol class="arabic simple">
-<li><p>Data Collection (Pengumpulan data)
-Kumpulkan dataset yang akan digunakan, Data bisa berasal dari :</p></li>
-</ol>
-<ul class="simple">
-<li><p>Database (MySQL, PostgreSQL, dll)</p></li>
-<li><p>File CSV, Excel</p></li>
-<li><p>APl</p></li>
-<li><p>Dataset publik</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Data Preprocessing (Persiapan Data)
-Tahapan ini meliputi :</p></li>
-</ol>
-<ul class="simple">
-<li><p>Menghapus data yang kosong (Missing Value)</p></li>
-<li><p>Normalisasi data (jika diperlukan)</p></li>
-<li><p>Seleksi fitur numerik yang relevan</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Pemilihan Fitur (Feature Selection)
-Pilih gitur numerik yang akan digunakan untuk mendeteksi outlier.
-Contoh fitur pada dataset iris :</p></li>
-</ol>
-<ul class="simple">
-<li><p>sepal_length</p></li>
-<li><p>sepal_width</p></li>
-<li><p>petal_length</p></li>
-<li><p>petal_width</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>Hitung Jarak Euclidean (Distance Calculation)
-Gunakan rumus Eucliden Distance untuk menghitung jarak antara data dengan data lainnya.</p></li>
-</ol>
-<p>Rumus Euclidean Distance :</p>
-<p><img alt="image.png" src="data:image/png;base64,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" /></p>
-<p>di mana :</p>
-<ul class="simple">
-<li><p>p adalah data saat ini</p></li>
-<li><p>q adalah data tetangga terdekat</p></li>
-<li><p>n adalah jumlah fitur</p></li>
-</ul>
-<ol class="arabic simple" start="5">
-<li><p>Tentukan Jumlah Tetangga (k)
-Tentukan jumlah k (tetangga terdekat) untuk membandingkan jarak data
-Contoh :</p></li>
-</ol>
-<ul class="simple">
-<li><p>k = 3 (3 tetangga terdekat)</p></li>
-<li><p>k = 5 (5 tetangga terdekat)</p></li>
-</ul>
-<ol class="arabic simple" start="6">
-<li><p>Hitung Jarak Ke Tetangga Terdekat
-Untuk setiap data, hitung jarak ke k tetangga terdekat menggunakan rumus euclidean.</p></li>
-<li><p>Tentukan Threshold (Batas Outlier)
-Gunakan metode berikut untuk menentukan threshold :</p></li>
-</ol>
-<ul class="simple">
-<li><p>Persentil (Percentile)</p></li>
-<li><p>Rata-rata + Standar Deviasi</p></li>
-<li><p>IQR (Interquartile Range)</p></li>
-</ul>
-<ol class="arabic simple" start="8">
-<li><p>Identifikasi Outlier
-Jika jarak data lebih besar dari threshold, maka data tersebut dianggap sebagai outlier</p></li>
-<li><p>Visualisasi Outlier
-Gunakan scatter plot untuk memvisualisasikan hasil deteksi outlier</p></li>
-<li><p>Evaluasi Hasil
-Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></li>
-<li><p><strong>Kelebihan dan Kekurangan Metode k-NN untuk Deteksi Outlier</strong></p></li>
-</ol>
-<p>Metode k-Nearest Neighbors (k-NN) adalah salah satu metode yang sering digunakan dalam Outlier Detection karena berbasis jarak (distance-based). Meskipun metode ini sederhana, namun memiliki keunggulan dan kelemahan tertentu.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="kelebihan">
-<h1>Kelebihan<a class="headerlink" href="#kelebihan" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Sederhana &amp; Mudah Dipahami</p></li>
-<li><p>Tidak Memerlukan Asumsi Distribusi Data</p></li>
-<li><p>Bisa Digunakan di Berbagai Jenis Data</p></li>
-<li><p>Mudah Diimplementasikan</p></li>
-<li><p>Deteksi outlier yang bersifat lokal</p></li>
-<li><p>Non-parametrik</p></li>
-</ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="kekurangan">
-<h1>Kekurangan<a class="headerlink" href="#kekurangan" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Sensitif Terhadap Skala Data</p></li>
-<li><p>Lambat pada Dataset Besar</p></li>
-<li><p>Sulit Menentukan Nilai k yang Optimal</p></li>
-<li><p>Tidak Tahan Terhadap Noise</p></li>
-<li><p>Butuh Banyak Memori</p></li>
-<li><p>Tidak Efisien pada Data Berdimensi Tinggi (Curse of Dimensionality)</p></li>
-</ul>
-<ol class="arabic simple" start="6">
-<li><p><strong>Kesimpulan</strong></p></li>
-</ol>
-<p>Metode K-Nearest Neighbors (KNN) efektif digunakan dalam mendeteksi outlier pada dataset. Penentuan threshold yang tepat sangat penting untuk memastikan data yang terdeteksi benar-benar merupakan outlier dan bukan variasi normal dalam dataset.</p>
 <p>Langkah awal menjelaskan bawa kode tersebut adalah perintah untuk menginstal dua pustaka libraries pyhton menggunkan pip, yaitu manajer paket untuk python.</p>
 <ul class="simple">
 <li></li>
@@ -533,6 +414,53 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
 </div>
 </div>
 </div>
+<p><strong>Penjelasan Kode</strong></p>
+<p>Kode ini mendeteksi outlier dalam dataset bunga iris dengan menggunakan jarak Euclidean terhadap titik referensi. Outlier ditentukan berdasarkan threshold persentil 93.5%, dan hasilnya divisualisasikan menggunakan scatter plot.</p>
+<p><strong>Langkah-Langkah Kode:</strong></p>
+<ol class="arabic simple">
+<li><p>Mengambil Data dari PostgreSQL dan MySQL</p></li>
+</ol>
+<ul class="simple">
+<li><p>get_pg_data(): Mengambil data sepal (panjang &amp; lebar sepal) dari PostgreSQL.</p></li>
+<li><p>get_mysql_data(): Mengambil data petal (panjang &amp; lebar petal) dari MySQL.</p></li>
+<li><p>Data ini diambil menggunakan library psycopg2 dan pymysql, lalu dikonversi menjadi pandas DataFrame.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Menggabungkan Data Berdasarkan ID dan Class</p></li>
+</ol>
+<ul class="simple">
+<li><p>Data dari PostgreSQL dan MySQL digabungkan dengan pd.merge() menggunakan kolom “id” dan “class”.</p></li>
+<li><p>Hanya data yang memiliki pasangan di kedua database yang dipertahankan (how=”inner”).</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Menghitung Jarak Euclidean</p></li>
+</ol>
+<ul class="simple">
+<li><p>Fitur numerik yang digunakan:</p></li>
+<li><p>petal_length, petal_width, sepal_length, sepal_width</p></li>
+<li><p>Titik referensi yang dipilih adalah baris terakhir dari dataset.</p></li>
+<li><p>Fungsi compute_distances() menghitung jarak Euclidean antara setiap titik dengan titik referensi.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Menentukan Outlier</p></li>
+</ol>
+<ul class="simple">
+<li><p>Threshold ditentukan berdasarkan persentil 93.5% dari nilai jarak yang dihitung.</p></li>
+<li><p>Titik yang memiliki jarak lebih besar dari threshold dikategorikan sebagai outlier.</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Menampilkan Hasil</p></li>
+</ol>
+<ul class="simple">
+<li><p>Data ditampilkan dengan kolom tambahan:</p></li>
+<li><p>“distance” (jarak Euclidean ke referensi).</p></li>
+<li><p>“outlier” (True jika termasuk outlier, False jika bukan).</p></li>
+<li><p>Hasil divisualisasikan menggunakan scatter plot:</p></li>
+<li><p>Warna biru untuk data normal, merah untuk outlier.</p></li>
+<li><p>Scatter plot dibuat untuk sepal dan petal dengan Seaborn.</p></li>
+</ul>
+<p><strong>Kesimpulan</strong></p>
+<p>Kode ini mendeteksi outlier berdasarkan jarak Euclidean terhadap titik referensi terakhir di dataset. Data yang memiliki jarak terbesar (di atas persentil 93.5%) dianggap sebagai outlier dan divisualisasikan dalam bentuk scatter plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
@@ -624,7 +552,7 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id           class  petal_length  petal_width  sepal_length  sepal_width  distance  outlier
   1     Iris-setosa           1.4          0.2           5.1          3.5  5.424942    False
-  2     Iris-setosa           1.4          0.2           4.9          3.0  5.244044    False
+  2     Iris-setosa          14.0          2.0          40.9         30.0 46.407542     True
   3     Iris-setosa           1.3          0.2           4.7          3.2  5.430470    False
   4     Iris-setosa           1.5          0.2           4.6          3.1  5.273519    False
   5     Iris-setosa           1.4          0.2           5.0          3.6  5.485435     True
@@ -659,7 +587,7 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
  34     Iris-setosa           1.4          0.2           5.5          4.2  5.746303     True
  35     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
  36     Iris-setosa           1.2          0.2           5.0          3.2  5.448853    False
- 37     Iris-setosa           1.3          0.2           5.5          3.5  5.457105     True
+ 37     Iris-setosa           1.3          0.2           5.5          3.5  5.457105    False
  38     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
  39     Iris-setosa           1.3          0.2           4.4          3.0  5.422177    False
  40     Iris-setosa           1.5          0.2           5.1          3.4  5.311309    False
@@ -776,10 +704,20 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
 151            ????           5.1          3.2           5.8          1.0  0.000000    False
 </pre></div>
 </div>
-<img alt="_images/efcf8ce854e8e9d85154a4f1c427fbba1a51fbcb599e89dc6e06f9d99694c9f3.png" src="_images/efcf8ce854e8e9d85154a4f1c427fbba1a51fbcb599e89dc6e06f9d99694c9f3.png" />
-<img alt="_images/6d1dd5d737a0e2e0ce78c49089dd975f27d74cf778d4743053af34464d1d6852.png" src="_images/6d1dd5d737a0e2e0ce78c49089dd975f27d74cf778d4743053af34464d1d6852.png" />
+<img alt="_images/140946a7c82f46cefdb40335f2544b5b70c33ccc9597070d2b14212228b36ded.png" src="_images/140946a7c82f46cefdb40335f2544b5b70c33ccc9597070d2b14212228b36ded.png" />
+<img alt="_images/9675b0d7724b1bf28b19784698dca0984af7d7e5bfc5695e141d2fbc36f87414.png" src="_images/9675b0d7724b1bf28b19784698dca0984af7d7e5bfc5695e141d2fbc36f87414.png" />
 </div>
 </div>
+<p>Kode tersebut menghitung total jumlah outlier dalam DataFrame df_merged dengan langkah-langkah berikut:</p>
+<ol class="arabic simple">
+<li><p>Akses Kolom “outlier”:
+df_merged[“outlier”] mengambil kolom “outlier” dalam DataFrame. Biasanya, kolom ini berisi nilai 1 untuk outlier dan 0 untuk data normal.</p></li>
+<li><p>Hitung Jumlah Outlier:
+.sum() menjumlahkan semua nilai dalam kolom “outlier”, sehingga menghasilkan total jumlah outlier.</p></li>
+<li><p>Cetak Hasil:
+print(f”Total Outlier: {total_outliers}”) menampilkan jumlah outlier yang telah dihitung.</p></li>
+</ol>
+<p>Jika kolom “outlier” berisi nilai lain (misalnya, -1 untuk outlier dan 1 untuk normal seperti pada LOF), pastikan nilai yang dijumlahkan sesuai dengan definisi outlier dalam dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hitung total outlier</span>
@@ -794,6 +732,16 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
 </div>
 </div>
 </div>
+<p>Kode tersebut mengurutkan data dalam DataFrame df_merged berdasarkan kolom “distance” dari yang terkecil ke terbesar, dengan langkah-langkah berikut:</p>
+<ol class="arabic simple">
+<li><p>Mengurutkan Data:
+df_merged.sort_values(by=”distance”, ascending=True) mengurutkan DataFrame berdasarkan kolom “distance” secara ascending (dari kecil ke besar).</p></li>
+<li><p>Menyimpan Hasil:
+Hasil pengurutan disimpan dalam variabel df_sorted.</p></li>
+<li><p>Menampilkan Data:
+print(df_sorted.to_string(index=False)) mencetak seluruh DataFrame tanpa menampilkan indeks, sehingga output lebih bersih dan mudah dibaca.</p></li>
+</ol>
+<p>Kode ini berguna untuk melihat data yang memiliki jarak terkecil terlebih dahulu, misalnya dalam analisis outlier atau pencarian tetangga terdekat dalam metode seperti LOF atau KNN.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
@@ -919,10 +867,9 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
  32     Iris-setosa           1.5          0.4           5.4          3.4  5.169139    False
  46     Iris-setosa           1.4          0.3           4.8          3.0  5.205766    False
  30     Iris-setosa           1.6          0.2           4.7          3.2  5.224940    False
-  2     Iris-setosa           1.4          0.2           4.9          3.0  5.244044    False
+ 35     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
  38     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
  10     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
- 35     Iris-setosa           1.5          0.1           4.9          3.1  5.271622    False
   4     Iris-setosa           1.5          0.2           4.6          3.1  5.273519    False
  19     Iris-setosa           1.7          0.3           5.7          3.8  5.274467    False
   6     Iris-setosa           1.7          0.4           5.4          3.9  5.288667    False
@@ -947,7 +894,7 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
  36     Iris-setosa           1.2          0.2           5.0          3.2  5.448853    False
  20     Iris-setosa           1.5          0.3           5.1          3.8  5.449771    False
  41     Iris-setosa           1.3          0.3           5.0          3.5  5.453439    False
- 37     Iris-setosa           1.3          0.2           5.5          3.5  5.457105     True
+ 37     Iris-setosa           1.3          0.2           5.5          3.5  5.457105    False
   5     Iris-setosa           1.4          0.2           5.0          3.6  5.485435     True
  43     Iris-setosa           1.3          0.2           4.4          3.2  5.499091     True
  17     Iris-setosa           1.3          0.4           5.4          3.9  5.554278     True
@@ -957,9 +904,12 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
  34     Iris-setosa           1.4          0.2           5.5          4.2  5.746303     True
  15     Iris-setosa           1.2          0.2           5.8          4.0  5.762812     True
  23     Iris-setosa           1.0          0.2           4.6          3.6  5.831809     True
+  2     Iris-setosa          14.0          2.0          40.9         30.0 46.407542     True
 </pre></div>
 </div>
 </div>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -1002,31 +952,21 @@ Cek apakah jumlah outlier masuk akal dan sesuai dengan karakteristik data</p></l
         <p class="prev-next-title">TUGAS 1</p>
       </div>
     </a>
+    <a class="right-next"
+       href="KNN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Identifikasi Outlier Menggunakan K-Nearest Neighbors (KNN) dalam Analisis Data</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Tugas 2</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan">Kelebihan</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kekurangan">Kekurangan</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
