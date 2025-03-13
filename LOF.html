@@ -368,7 +368,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-baru-10-baris"><strong>1. Dataset Baru (10 Baris)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-jarak-euclidean"><strong>2. Hitung Jarak Euclidean</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tentukan-k-tetangga-terdekat-k-2"><strong>3. Tentukan k-Tetangga Terdekat (k=2)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-reachability-distance"><strong>4. Hitung Reachability Distance</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-local-reachability-density-lrd"><strong>5. Hitung Local Reachability Density (LRD)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-lof"><strong>6. Hitung LOF</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi"><strong>7. Interpretasi</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pakai-sklearn-untuk-data-contoh"><strong>IMPLEMENTASI PAKAI SKLEARN UNTUK DATA CONTOH</strong></a></li>
 </ul>
             </nav>
@@ -433,10 +442,11 @@
 <section id="contoh-menghitung-manual-lof">
 <h2>CONTOH MENGHITUNG MANUAL LOF<a class="headerlink" href="#contoh-menghitung-manual-lof" title="Link to this heading">#</a></h2>
 <p>Berikut adalah cara singkat menghitung <strong>Local Outlier Factor (LOF)</strong> untuk satu titik data dengan dua fitur:</p>
-<ol class="arabic simple">
-<li><p><strong>Dataset</strong>:<br />
-Misalkan data berikut:</p></li>
-</ol>
+<p>Baik! Saya akan memperluas dataset menjadi 10 baris dan menunjukkan langkah-langkah perhitungan <strong>Local Outlier Factor (LOF)</strong> untuk salah satu titik secara manual. Mari kita mulai:</p>
+<hr class="docutils" />
+<section id="dataset-baru-10-baris">
+<h3><strong>1. Dataset Baru (10 Baris)</strong><a class="headerlink" href="#dataset-baru-10-baris" title="Link to this heading">#</a></h3>
+<p>Misalkan kita punya dataset berikut:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>ID</p></th>
@@ -446,58 +456,157 @@ Misalkan data berikut:</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>1</p></td>
-<td><p>10.5</p></td>
-<td><p>15.2</p></td>
+<td><p>5.2</p></td>
+<td><p>7.4</p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
-<td><p>20.3</p></td>
-<td><p>25.7</p></td>
+<td><p>10.1</p></td>
+<td><p>12.8</p></td>
 </tr>
 <tr class="row-even"><td><p>3</p></td>
-<td><p>30.8</p></td>
-<td><p>35.1</p></td>
+<td><p>15.3</p></td>
+<td><p>17.9</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>40.2</p></td>
-<td><p>45.6</p></td>
+<td><p>20.6</p></td>
+<td><p>22.5</p></td>
 </tr>
 <tr class="row-even"><td><p>5</p></td>
+<td><p>25.8</p></td>
+<td><p>27.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>30.9</p></td>
+<td><p>32.7</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>35.2</p></td>
+<td><p>37.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>40.4</p></td>
+<td><p>42.3</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>45.7</p></td>
+<td><p>47.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
 <td><p>50.9</p></td>
-<td><p>55.3</p></td>
+<td><p>52.8</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Kita akan hitung LOF untuk <strong>titik 3</strong> (30.8, 35.1).</p>
-<ol class="arabic simple" start="2">
-<li><p><strong>Hitung Jarak Euclidean</strong>:<br />
-Jarak antara titik 3 dan titik lainnya:</p>
+<p>Kita akan menghitung <strong>LOF untuk titik 6 (30.9, 32.7)</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="hitung-jarak-euclidean">
+<h3><strong>2. Hitung Jarak Euclidean</strong><a class="headerlink" href="#hitung-jarak-euclidean" title="Link to this heading">#</a></h3>
+<p>Jarak antara titik <strong>6</strong> ke titik lainnya dihitung menggunakan rumus Euclidean:</p>
+<p><span class="math notranslate nohighlight">\(
+d(A, B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+\)</span></p>
+<p>Kita hitung beberapa jarak terdekat:</p>
 <ul class="simple">
-<li><p>Titik 3 ke Titik 2: 14.28</p></li>
-<li><p>Titik 3 ke Titik 4: 14.34</p></li>
-</ul>
-</li>
-<li><p><strong>Tentukan k-Tetangga Terdekat</strong> (k=2):<br />
-Titik 3 memiliki dua tetangga terdekat: titik 2 dan titik 4.</p></li>
-<li><p><strong>Hitung Reachability Distance</strong>:<br />
-Reachability distance antara titik 3 dan tetangga:</p>
-<ul class="simple">
-<li><p>Titik 3 ke Titik 2: 14.28</p></li>
-<li><p>Titik 3 ke Titik 4: 14.34</p></li>
-</ul>
-</li>
-<li><p><strong>Hitung Local Reachability Density (LRD)</strong>:<br />
+<li><p><strong>Titik 6 ke Titik 5</strong>:
 <span class="math notranslate nohighlight">\(
-\text{LRD}(3) = \frac{1}{\frac{1}{2} \times (14.28 + 14.34)} = 0.07
-\)</span></p></li>
-<li><p><strong>Hitung LOF</strong>:<br />
+d(6,5) = \sqrt{(30.9 - 25.8)^2 + (32.7 - 27.1)^2}
+\)</span>
 <span class="math notranslate nohighlight">\(
-\text{LOF}(3) = \frac{0.07}{0.07} + \frac{0.07}{0.07} = 2
+= \sqrt{(5.1)^2 + (5.6)^2} = \sqrt{26.01 + 31.36} = \sqrt{57.37} \approx 7.58
 \)</span></p></li>
-<li><p><strong>Interpretasi</strong>:<br />
-Karena <strong>LOF = 2</strong> (lebih besar dari 1), titik 3 dianggap <strong>outlier</strong>.</p></li>
+<li><p><strong>Titik 6 ke Titik 7</strong>:
+<span class="math notranslate nohighlight">\(
+d(6,7) = \sqrt{(35.2 - 30.9)^2 + (37.5 - 32.7)^2}
+\)</span>
+<span class="math notranslate nohighlight">\(
+= \sqrt{(4.3)^2 + (4.8)^2} = \sqrt{18.49 + 23.04} = \sqrt{41.53} \approx 6.45
+\)</span></p></li>
+<li><p><strong>Titik 6 ke Titik 4</strong>:
+<span class="math notranslate nohighlight">\(
+d(6,4) = \sqrt{(30.9 - 20.6)^2 + (32.7 - 22.5)^2}
+\)</span>
+<span class="math notranslate nohighlight">\(
+= \sqrt{(10.3)^2 + (10.2)^2} = \sqrt{106.09 + 104.04} = \sqrt{210.13} \approx 14.49
+\)</span></p></li>
+<li><p><strong>Titik 6 ke Titik 8</strong>:
+<span class="math notranslate nohighlight">\(
+d(6,8) = \sqrt{(40.4 - 30.9)^2 + (42.3 - 32.7)^2}
+\)</span>
+<span class="math notranslate nohighlight">\(
+= \sqrt{(9.5)^2 + (9.6)^2} = \sqrt{90.25 + 92.16} = \sqrt{182.41} \approx 13.51
+\)</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="tentukan-k-tetangga-terdekat-k-2">
+<h3><strong>3. Tentukan k-Tetangga Terdekat (k=2)</strong><a class="headerlink" href="#tentukan-k-tetangga-terdekat-k-2" title="Link to this heading">#</a></h3>
+<p>Dari hasil perhitungan jarak, dua tetangga terdekat titik <strong>6</strong> adalah:</p>
+<ol class="arabic simple">
+<li><p><strong>Titik 7</strong> (jarak <strong>6.45</strong>)</p></li>
+<li><p><strong>Titik 5</strong> (jarak <strong>7.58</strong>)</p></li>
 </ol>
-<p>LOF mengukur seberapa terisolasi titik dibandingkan tetangganya. Titik dengan LOF lebih besar dari 1 dianggap outlier.</p>
+</section>
+<hr class="docutils" />
+<section id="hitung-reachability-distance">
+<h3><strong>4. Hitung Reachability Distance</strong><a class="headerlink" href="#hitung-reachability-distance" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+\text{reach-dist}(A, B) = \max(\text{k-dist}(B), d(A,B))
+\)</span></p>
+<ul class="simple">
+<li><p><strong>Titik 6 ke Titik 5</strong>:
+<span class="math notranslate nohighlight">\(
+\text{reach-dist}(6,5) = \max(7.58, 7.58) = 7.58
+\)</span></p></li>
+<li><p><strong>Titik 6 ke Titik 7</strong>:
+<span class="math notranslate nohighlight">\(
+\text{reach-dist}(6,7) = \max(6.45, 6.45) = 6.45
+\)</span></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="hitung-local-reachability-density-lrd">
+<h3><strong>5. Hitung Local Reachability Density (LRD)</strong><a class="headerlink" href="#hitung-local-reachability-density-lrd" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+\text{LRD}(6) = \frac{1}{\frac{1}{k} \sum_{i=1}^{k} \text{reach-dist}(6, i)}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\text{LRD}(6) = \frac{1}{\frac{1}{2} (7.58 + 6.45)}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \frac{1}{\frac{1}{2} (14.03)}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \frac{1}{7.015} \approx 0.143
+\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="hitung-lof">
+<h3><strong>6. Hitung LOF</strong><a class="headerlink" href="#hitung-lof" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+\text{LOF}(6) = \frac{\sum_{i=1}^{k} \frac{\text{LRD}(i)}{\text{LRD}(6)}}{k}
+\)</span></p>
+<p>Misalkan <strong>LRD(5) ≈ 0.12</strong> dan <strong>LRD(7) ≈ 0.13</strong>, maka:</p>
+<p><span class="math notranslate nohighlight">\(
+\text{LOF}(6) = \frac{0.12 / 0.143 + 0.13 / 0.143}{2}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \frac{0.839 + 0.909}{2}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+= \frac{1.748}{2} = 0.874
+\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="interpretasi">
+<h3><strong>7. Interpretasi</strong><a class="headerlink" href="#interpretasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Karena <strong>LOF(6) = 0.874 &lt; 1</strong>, titik 6 <strong>tidak</strong> dianggap outlier.</p></li>
+<li><p>Jika LOF lebih besar dari <strong>1.5</strong>, maka titik lebih mencurigakan sebagai outlier.</p></li>
+<li><p>Jika LOF mendekati <strong>1</strong>, titik memiliki kepadatan yang mirip dengan tetangganya.</p></li>
+</ul>
+<p>Demikian perhitungan manual <strong>LOF</strong> untuk titik <strong>(30.9, 32.7)</strong> dalam dataset 10 baris! 🚀</p>
 <p><strong>Penjelasan Code</strong></p>
 <p>Kode ini menggunakan metode Local Outlier Factor (LOF) dari sklearn.neighbors untuk mendeteksi outlier dalam dataset sederhana yang memiliki dua fitur numerik (Feature1 dan Feature2). LOF menganalisis kepadatan lokal tiap titik data dibandingkan dengan tetangga terdekatnya untuk menentukan apakah titik tersebut merupakan outlier (-1) atau normal (1).</p>
 <p><strong>Langkah-Langkah Kode:</strong></p>
@@ -546,6 +655,7 @@ Karena <strong>LOF = 2</strong> (lebih besar dari 1), titik 3 dianggap <strong>o
 <p><strong>Kesimpulan:</strong></p>
 <p>Kode ini mendeteksi outlier dalam dataset berdasarkan kepadatan lokal tiap titik data menggunakan Local Outlier Factor (LOF). Dengan membandingkan titik terhadap 2 tetangga terdekatnya, LOF mengidentifikasi apakah sebuah titik termasuk anomali atau tidak.</p>
 </section>
+</section>
 <section id="implementasi-pakai-sklearn-untuk-data-contoh">
 <h2><strong>IMPLEMENTASI PAKAI SKLEARN UNTUK DATA CONTOH</strong><a class="headerlink" href="#implementasi-pakai-sklearn-untuk-data-contoh" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -554,10 +664,10 @@ Karena <strong>LOF = 2</strong> (lebih besar dari 1), titik 3 dianggap <strong>o
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">LocalOutlierFactor</span>
 
-<span class="c1"># Dataset contoh dengan angka yang diubah</span>
+<span class="c1"># Dataset dengan angka yang sesuai contoh</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Feature1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">10.5</span><span class="p">,</span> <span class="mf">20.3</span><span class="p">,</span> <span class="mf">30.8</span><span class="p">,</span> <span class="mf">40.2</span><span class="p">,</span> <span class="mf">50.9</span><span class="p">],</span>
-    <span class="s1">&#39;Feature2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">15.2</span><span class="p">,</span> <span class="mf">25.7</span><span class="p">,</span> <span class="mf">35.1</span><span class="p">,</span> <span class="mf">45.6</span><span class="p">,</span> <span class="mf">55.3</span><span class="p">]</span>
+    <span class="s1">&#39;Feature1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">,</span> <span class="mf">20.6</span><span class="p">,</span> <span class="mf">25.8</span><span class="p">,</span> <span class="mf">30.9</span><span class="p">,</span> <span class="mf">35.2</span><span class="p">,</span> <span class="mf">40.4</span><span class="p">,</span> <span class="mf">45.7</span><span class="p">,</span> <span class="mf">50.9</span><span class="p">],</span>
+    <span class="s1">&#39;Feature2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">7.4</span><span class="p">,</span> <span class="mf">12.8</span><span class="p">,</span> <span class="mf">17.9</span><span class="p">,</span> <span class="mf">22.5</span><span class="p">,</span> <span class="mf">27.1</span><span class="p">,</span> <span class="mf">32.7</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">,</span> <span class="mf">42.3</span><span class="p">,</span> <span class="mf">47.2</span><span class="p">,</span> <span class="mf">52.8</span><span class="p">]</span>
 <span class="p">}</span>
 
 <span class="c1"># Membuat DataFrame</span>
@@ -588,11 +698,16 @@ Karena <strong>LOF = 2</strong> (lebih besar dari 1), titik 3 dianggap <strong>o
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Feature1  Feature2  LOF Label
-0      10.5      15.2          1
-1      20.3      25.7          1
-2      30.8      35.1          1
-3      40.2      45.6          1
-4      50.9      55.3          1
+0       5.2       7.4          1
+1      10.1      12.8          1
+2      15.3      17.9          1
+3      20.6      22.5          1
+4      25.8      27.1          1
+5      30.9      32.7          1
+6      35.2      37.5          1
+7      40.4      42.3          1
+8      45.7      47.2          1
+9      50.9      52.8          1
 
 Jumlah outlier: 0
 
@@ -1045,7 +1160,16 @@ Data Outlier:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-baru-10-baris"><strong>1. Dataset Baru (10 Baris)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-jarak-euclidean"><strong>2. Hitung Jarak Euclidean</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tentukan-k-tetangga-terdekat-k-2"><strong>3. Tentukan k-Tetangga Terdekat (k=2)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-reachability-distance"><strong>4. Hitung Reachability Distance</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-local-reachability-density-lrd"><strong>5. Hitung Local Reachability Density (LRD)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-lof"><strong>6. Hitung LOF</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi"><strong>7. Interpretasi</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-pakai-sklearn-untuk-data-contoh"><strong>IMPLEMENTASI PAKAI SKLEARN UNTUK DATA CONTOH</strong></a></li>
 </ul>
   </nav></div>
