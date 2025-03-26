@@ -373,6 +373,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-akurasi-dari-data"><strong>Menghitung Akurasi dari data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Menjelaskan code di atas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-pada-data-iris"><strong>Implementasi Naive Bayes pada Data IRIS</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -563,7 +564,8 @@ c. Menentukan Skor Kepadatan (Density Score)</p></li>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id           class  petal_length  petal_width  sepal_length  sepal_width  knn_distance  outlier_knn
-  2     Iris-setosa          15.0         14.0          40.0         30.0     47.104565        False
+  2     Iris-setosa          15.0         14.0          40.0         30.0     47.087259        False
+  5     Iris-setosa          24.0         30.0          21.0         45.0     57.003684        False
   6     Iris-setosa           1.6          5.0           3.5          2.3      5.495453        False
   7     Iris-setosa           1.9          0.4           2.1          3.2      5.300000        False
   8     Iris-setosa           1.7          0.3           1.5          4.2      6.048140        False
@@ -654,7 +656,6 @@ c. Menentukan Skor Kepadatan (Density Score)</p></li>
  98 Iris-versicolor           4.3          1.3           6.2          2.9      2.961419        False
  99 Iris-versicolor           3.0          1.1           5.1          2.5      2.533772        False
 100 Iris-versicolor           4.1          1.3           5.7          2.8      2.812472        False
-102  Iris-virginica          51.0         19.0           5.8          2.7     50.387498        False
 106  Iris-virginica           6.6          2.1           7.6          3.0      4.523273        False
 107  Iris-virginica           4.5          1.7           4.9          2.5      3.304542        False
 108  Iris-virginica           6.3          1.8           7.3          2.9      4.047221        False
@@ -704,8 +705,8 @@ c. Menentukan Skor Kepadatan (Density Score)</p></li>
 Jumlah data setelah outlier dihapus: 137
 </pre></div>
 </div>
-<img alt="_images/69f51cd97e73bfb006667f3cdf56505b29cf1f231dfb2e05954f9ba964045d7a.png" src="_images/69f51cd97e73bfb006667f3cdf56505b29cf1f231dfb2e05954f9ba964045d7a.png" />
-<img alt="_images/236d581ebab97b967a434a0836729e145a56aeec8c3c1082e15e6597b4f5e94e.png" src="_images/236d581ebab97b967a434a0836729e145a56aeec8c3c1082e15e6597b4f5e94e.png" />
+<img alt="_images/e38b5d7bea46baea49ac909decf7488acb48b2b04f5e33ddbcfd6e117250d2d2.png" src="_images/e38b5d7bea46baea49ac909decf7488acb48b2b04f5e33ddbcfd6e117250d2d2.png" />
+<img alt="_images/e1864929996df97abd4174f8e45b1469f2f4be496a324839aa23ce38ee11ea68.png" src="_images/e1864929996df97abd4174f8e45b1469f2f4be496a324839aa23ce38ee11ea68.png" />
 </div>
 </div>
 </section>
@@ -895,10 +896,10 @@ Jumlah data setelah outlier dihapus: 137
  99 Iris-versicolor           3.0          1.1           5.1          2.5              1
 100 Iris-versicolor           4.1          1.3           5.7          2.8              1
 101  Iris-virginica          62.0         25.0          63.0         33.0             -1
-102  Iris-virginica          51.0         19.0           5.8          2.7             -1
-103  Iris-virginica          59.0         21.0           7.1          3.0             -1
-104  Iris-virginica          56.0         18.0           6.3          2.9             -1
-105  Iris-virginica          58.0         22.0           6.5          3.0             -1
+102  Iris-virginica          51.0         19.0          58.0         27.0             -1
+103  Iris-virginica          59.0         21.0          71.0         30.0             -1
+104  Iris-virginica          56.0         18.0          63.0         29.0             -1
+105  Iris-virginica          58.0         22.0          65.0         33.0             -1
 106  Iris-virginica           6.6          2.1           7.6          3.0              1
 107  Iris-virginica           4.5          1.7           4.9          2.5              1
 108  Iris-virginica           6.3          1.8           7.3          2.9              1
@@ -963,10 +964,10 @@ Data Outlier:
  54 Iris-versicolor          44.0         13.0          55.0         23.0
  55 Iris-versicolor          46.0         15.0          65.0         28.0
 101  Iris-virginica          62.0         25.0          63.0         33.0
-102  Iris-virginica          51.0         19.0           5.8          2.7
-103  Iris-virginica          59.0         21.0           7.1          3.0
-104  Iris-virginica          56.0         18.0           6.3          2.9
-105  Iris-virginica          58.0         22.0           6.5          3.0
+102  Iris-virginica          51.0         19.0          58.0         27.0
+103  Iris-virginica          59.0         21.0          71.0         30.0
+104  Iris-virginica          56.0         18.0          63.0         29.0
+105  Iris-virginica          58.0         22.0          65.0         33.0
 
 Jumlah data setelah dihapus :  132
 
@@ -1170,16 +1171,16 @@ Data tidak outlier :
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi dengan outlier: 1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi dengan outlier: 0.9666666666666667
                  precision    recall  f1-score   support
 
     Iris-setosa       1.00      1.00      1.00        10
-Iris-versicolor       1.00      1.00      1.00         9
- Iris-virginica       1.00      1.00      1.00        11
+Iris-versicolor       0.90      1.00      0.95         9
+ Iris-virginica       1.00      0.91      0.95        11
 
-       accuracy                           1.00        30
-      macro avg       1.00      1.00      1.00        30
-   weighted avg       1.00      1.00      1.00        30
+       accuracy                           0.97        30
+      macro avg       0.97      0.97      0.97        30
+   weighted avg       0.97      0.97      0.97        30
 
 Akurasi tanpa outlier: 0.9259259259259259
                  precision    recall  f1-score   support
@@ -1387,19 +1388,19 @@ Iris-versicolor       1.00      0.86      0.92         7
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.7777777777777778
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi: 0.8148148148148148
                  precision    recall  f1-score   support
 
-    Iris-setosa       1.00      1.00      1.00        10
-Iris-versicolor       0.71      0.56      0.62         9
- Iris-virginica       0.60      0.75      0.67         8
+    Iris-setosa       1.00      1.00      1.00        12
+Iris-versicolor       0.62      0.71      0.67         7
+ Iris-virginica       0.71      0.62      0.67         8
 
-       accuracy                           0.78        27
-      macro avg       0.77      0.77      0.76        27
-   weighted avg       0.79      0.78      0.78        27
+       accuracy                           0.81        27
+      macro avg       0.78      0.78      0.78        27
+   weighted avg       0.82      0.81      0.81        27
 </pre></div>
 </div>
-<img alt="_images/6823f60eb7b3576f22d48c72ea9a17113195a822cc3c99796e23cd6a340c27da.png" src="_images/6823f60eb7b3576f22d48c72ea9a17113195a822cc3c99796e23cd6a340c27da.png" />
+<img alt="_images/95a53304024dfd2d2093d9a1e9111a6c7f4e45e7772d6186fbb15953576e7738.png" src="_images/95a53304024dfd2d2093d9a1e9111a6c7f4e45e7772d6186fbb15953576e7738.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1425,7 +1426,7 @@ Iris-versicolor       0.71      0.56      0.62         9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d147fb38a3ddfdc5f679a6419101ba122aaf234e0cbc3fed21c1c80f1ac5ec21.png" src="_images/d147fb38a3ddfdc5f679a6419101ba122aaf234e0cbc3fed21c1c80f1ac5ec21.png" />
+<img alt="_images/7522eb7e55b4fedfe69171c8291c4361129a9cbba59039c13845a1c0613c5e77.png" src="_images/7522eb7e55b4fedfe69171c8291c4361129a9cbba59039c13845a1c0613c5e77.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1451,7 +1452,130 @@ Iris-versicolor       0.71      0.56      0.62         9
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1cca76b987b2d46062587bc693f3258f4c969af1c581526732021491d07851cb.png" src="_images/1cca76b987b2d46062587bc693f3258f4c969af1c581526732021491d07851cb.png" />
+<img alt="_images/52306aff625ad73b90c855778a59b79112a6f0cac639551e26c4c8b376a0fc10.png" src="_images/52306aff625ad73b90c855778a59b79112a6f0cac639551e26c4c8b376a0fc10.png" />
+</div>
+</div>
+</section>
+<section id="implementasi-naive-bayes-pada-data-iris">
+<h2><strong>Implementasi Naive Bayes pada Data IRIS</strong><a class="headerlink" href="#implementasi-naive-bayes-pada-data-iris" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Asumsikan df_merged sudah ada dari kode sebelumnya</span>
+
+<span class="c1"># Encode label kelas ke numerik</span>
+<span class="n">label_encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">])</span>
+
+<span class="c1"># Data dengan outlier</span>
+<span class="n">X_all</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span>
+<span class="n">y_all</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Pastikan dalam bentuk array numpy</span>
+
+<span class="c1"># Data tanpa outlier</span>
+<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">])</span>
+<span class="n">X_clean</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span>
+<span class="n">y_clean</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="s2">&quot;class_encoded&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Pastikan dalam bentuk array numpy</span>
+
+<span class="c1"># Split data dengan outlier</span>
+<span class="n">X_train_all</span><span class="p">,</span> <span class="n">X_test_all</span><span class="p">,</span> <span class="n">y_train_all</span><span class="p">,</span> <span class="n">y_test_all</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Split data tanpa outlier</span>
+<span class="n">X_train_clean</span><span class="p">,</span> <span class="n">X_test_clean</span><span class="p">,</span> <span class="n">y_train_clean</span><span class="p">,</span> <span class="n">y_test_clean</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_clean</span><span class="p">,</span> <span class="n">y_clean</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi model Naive Bayes</span>
+<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+
+<span class="c1"># Latih dan uji model dengan outlier</span>
+<span class="n">y_pred_all</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_all</span><span class="p">,</span> <span class="n">y_train_all</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_all</span><span class="p">)</span>
+<span class="n">mislabeled_all</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test_all</span> <span class="o">!=</span> <span class="n">y_pred_all</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">accuracy_all</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">,</span> <span class="n">y_pred_all</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of mislabeled points with outliers out of a total </span><span class="si">%d</span><span class="s2"> points : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_test_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mislabeled_all</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy with outliers: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_all</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan label yang salah pada data dengan outlier</span>
+<span class="n">mislabeled_indices_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test_all</span> <span class="o">!=</span> <span class="n">y_pred_all</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mislabeled points with outliers:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mislabeled_indices_all</span><span class="p">:</span>
+    <span class="n">true_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">predicted_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_pred_all</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, True Label: </span><span class="si">{</span><span class="n">true_label</span><span class="si">}</span><span class="s2">, Predicted: </span><span class="si">{</span><span class="n">predicted_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># Latih dan uji model tanpa outlier</span>
+<span class="n">y_pred_clean</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_clean</span><span class="p">,</span> <span class="n">y_train_clean</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_clean</span><span class="p">)</span>
+<span class="n">mislabeled_clean</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test_clean</span> <span class="o">!=</span> <span class="n">y_pred_clean</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">accuracy_clean</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">,</span> <span class="n">y_pred_clean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of mislabeled points without outliers out of a total </span><span class="si">%d</span><span class="s2"> points : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X_test_clean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mislabeled_clean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy without outliers: </span><span class="si">%.2f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">accuracy_clean</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Menampilkan label yang salah pada data tanpa outlier</span>
+<span class="n">mislabeled_indices_clean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_test_clean</span> <span class="o">!=</span> <span class="n">y_pred_clean</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mislabeled points without outliers:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">mislabeled_indices_clean</span><span class="p">:</span>
+    <span class="n">true_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">predicted_label</span> <span class="o">=</span> <span class="n">label_encoder</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y_pred_clean</span><span class="p">[</span><span class="n">i</span><span class="p">])])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Index: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, True Label: </span><span class="si">{</span><span class="n">true_label</span><span class="si">}</span><span class="s2">, Predicted: </span><span class="si">{</span><span class="n">predicted_label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi Confusion Matrix</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_all</span><span class="p">,</span> <span class="n">y_pred_all</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix with Outliers&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Label&quot;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_clean</span><span class="p">,</span> <span class="n">y_pred_clean</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">label_encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix without Outliers&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Label&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of mislabeled points with outliers out of a total 30 points : 20
+Accuracy with outliers: 33.33%
+Mislabeled points with outliers:
+Index: 0, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 1, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 3, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 4, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 5, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 6, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 8, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 9, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 11, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 12, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 13, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 14, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 15, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 16, True Label: Iris-virginica, Predicted: Iris-setosa
+Index: 17, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 18, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 20, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 22, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 28, True Label: Iris-setosa, Predicted: Iris-virginica
+Index: 29, True Label: Iris-setosa, Predicted: Iris-virginica
+
+Number of mislabeled points without outliers out of a total 27 points : 4
+Accuracy without outliers: 85.19%
+Mislabeled points without outliers:
+Index: 0, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 1, True Label: Iris-versicolor, Predicted: Iris-virginica
+Index: 14, True Label: Iris-virginica, Predicted: Iris-versicolor
+Index: 25, True Label: Iris-virginica, Predicted: Iris-versicolor
+</pre></div>
+</div>
+<img alt="_images/68973bee4dbd980af8b140e05fdf0426bdb05824327453c581d92203bcf660ab.png" src="_images/68973bee4dbd980af8b140e05fdf0426bdb05824327453c581d92203bcf660ab.png" />
 </div>
 </div>
 </section>
@@ -1528,6 +1652,7 @@ Iris-versicolor       0.71      0.56      0.62         9
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-akurasi-dari-data"><strong>Menghitung Akurasi dari data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Menjelaskan code di atas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-pada-data-iris"><strong>Implementasi Naive Bayes pada Data IRIS</strong></a></li>
 </ul>
   </nav></div>
 
